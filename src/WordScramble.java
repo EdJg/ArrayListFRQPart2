@@ -16,20 +16,20 @@ public class WordScramble
     public static String scrambleWord(String word)
     {
         String temp = "";
-        for (int index = 0; index + 2 < word.length(); index ++)
+        for (int index = 0; index + 3 < word.length(); index ++)
         {
             if (word.substring(index, index + 1).equals("A"))
             {
                 if (!(word.substring(index + 2, index + 3).equals("A")))
                 {
-                    temp += word.substring(index + 2, index + 3) + word.substring(index + 1, index + 2) + word.substring(index, index + 1);
+                    temp += word.substring(index + 1, index + 2) + word.substring(index, index + 1) + word.substring(index + 2, index + 3);
                 }
             }
             else if (word.substring(index + 1, index + 2).equals("A"))
             {
                 if (!(word.substring(index + 2, index + 3).equals("A")))
                 {
-                    temp += word.substring(index, index + 1) + word.substring(index + 2, index + 3) + word.substring(index + 1, index + 2);
+                    temp += word.substring(index + 1, index + 2) + word.substring(index, index + 1) + word.substring(index + 2, index + 3);
                 }
             }
         }
