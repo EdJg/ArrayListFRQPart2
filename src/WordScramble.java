@@ -15,7 +15,25 @@ public class WordScramble
      */
     public static String scrambleWord(String word)
     {
-        /* to be implemented in part (a) */
+        String temp = "";
+        for (int index = 0; index + 2 < word.length(); index ++)
+        {
+            if (word.substring(index, index + 1).equals("A"))
+            {
+                if (!(word.substring(index + 2, index + 3).equals("A")))
+                {
+                    temp += word.substring(index + 2, index + 3) + word.substring(index + 1, index + 2) + word.substring(index, index + 1);
+                }
+            }
+            else if (word.substring(index + 1, index + 2).equals("A"))
+            {
+                if (!(word.substring(index + 2, index + 3).equals("A")))
+                {
+                    temp += word.substring(index, index + 1) + word.substring(index + 2, index + 3) + word.substring(index + 1, index + 2);
+                }
+            }
+        }
+        return temp;
     }
 
     /** Modifies wordList by replacing each word with its scrambled
