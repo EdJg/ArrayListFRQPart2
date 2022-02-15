@@ -16,22 +16,24 @@ public class WordScramble
     public static String scrambleWord(String word)
     {
         String temp = "";
-        for (int index = 0; index + 3 < word.length(); index ++)
+        int index = 0;
+        while (index < word.length() - 1)
         {
-            if (word.substring(index, index + 1).equals("A"))
+            if (word.substring(index, index + 1).equals("A") && !word.substring(index + 1, index + 2).equals("A"))
             {
-                if (!(word.substring(index + 2, index + 3).equals("A")))
-                {
-                    temp += word.substring(index + 1, index + 2) + word.substring(index, index + 1) + word.substring(index + 2, index + 3);
-                }
+                temp += word.substring(index + 1, index + 2);
+                temp += "A";
+                index += 2;
             }
-            else if (word.substring(index + 1, index + 2).equals("A"))
+            else
             {
-                if (!(word.substring(index + 2, index + 3).equals("A")))
-                {
-                    temp += word.substring(index + 1, index + 2) + word.substring(index, index + 1) + word.substring(index + 2, index + 3);
-                }
+                temp += word.substring(index, index + 1);
+                index ++;
             }
+        }
+        if (index < word.length())
+        {
+            temp += word.substring(index);
         }
         return temp;
     }
@@ -50,6 +52,20 @@ public class WordScramble
      */
     public static void scrambleOrRemove(ArrayList<String> wordList)
     {
-        /* to be implemented in part (b) */
+        int index = 0;
+        while (index < wordList.size())
+        {
+            String word = wordList.get(index);
+            String scram = scrambleWord(word);
+            if (word.equals(scram))
+            {
+                wordList.remove(index);
+            }
+            else
+            {
+                wordList.set(index, scram);
+                index ++;
+            }
+        }
     }
 }
